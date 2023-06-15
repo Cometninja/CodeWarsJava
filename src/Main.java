@@ -4,16 +4,45 @@ import java.util.List;
 public class Main{
     public static void main(String[] args){
 
-        List<List<Integer>> sets = createTwoSetsOfEqualSum(844035);
-        int firstset = 0;
-        int secondset = 0;
-        for (int i :sets.get(0)) {
-            firstset += i;
+    System.out.println(digitize(46));
+    }
+
+    public static int[] digitize(long n) {
+        String str = String.valueOf(n);
+        System.out.println(str);
+        int[] ints = new int[str.length()];
+        for (int i = str.length()-1,j = 0; i>0;i--,j++){
+            ints[j] = Integer.parseInt(String.valueOf(str.charAt(i)));
         }
-        for (int i : sets.get(1)){
-            secondset += i;
+        return ints;
+    }
+    public static boolean  isIsogram(String str) {
+       List<Character> chars = new ArrayList<>();
+
+        for(int i = 0;i < str.length();i++){
+           if(chars.contains(str.toLowerCase().charAt(i)))
+               return false;
+           else chars.add(str.toLowerCase().charAt(i));
+       }
+        return true;
+
+    }
+    public static String solution(String str) {
+        String result = "";
+        for (int i = str.length()-1; i >= 0; i--) {
+
+           result += str.charAt(i);
         }
-        System.out.println(firstset +" "+ secondset);
+
+        return result;
+    }
+    public static double find_average(int[] array){
+        double number = 0;
+        for (int i : array) {
+            number += i;
+        }
+        return number/array.length;
+
     }
 
     public static List<List<Integer>> createTwoSetsOfEqualSum(int n) {
@@ -46,6 +75,8 @@ public class Main{
         for (int numb:n) {
             number += numb*numb;
         }
+
+
         return number;
     }
     public static int century(int number) {
